@@ -1,0 +1,88 @@
+<!doctype html>
+<title>CodeMirror: C-like mode</title>
+<meta charset="utf-8"/>
+<script src="/scripts/vendor/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/docs.css" />
+<link rel="stylesheet" type="text/css" href="/css/vendor/codemirror/5.36.0/codemirror.css">
+<link rel="stylesheet" href="/css/vendor/codemirror/5.36.0/addon/hint/show-hint.css">
+<script src="/scripts/vendor/codemirror/5.36.0/codemirror.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/addon/edit/matchbrackets.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/addon/hint/show-hint.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/mode/clike/clike.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/mode/javascript/javascript.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/mode/css/css.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/addon/selection/mark-selection.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/addon/search/searchcursor.js"></script>
+<script type="text/javascript" src ="/scripts/code.js"></script>
+<link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+<style>
+.CodeMirror {
+  border: 2px inset #dee;
+}
+.styled-background { background-color: green; }
+
+</style>
+<select id="themeSelection">
+</select></br>
+<select id="numselect" multiple="multiple">
+
+</select>
+
+<button id = "btnselectall">Select All</button>
+<button id = "btndeselectall">Deselect All</button>
+
+
+<article>
+
+
+<h2>C-like mode</h2>
+
+<div><textarea id="c-code">
+
+
+</textarea></div>
+
+<h2>C++ example</h2>
+
+<div><textarea id="cpp-code">
+
+</textarea></div>
+
+<h2>Java example</h2>
+
+
+<div><textarea id="java-code">
+
+</textarea></div>
+<h2>C# example</h2>
+
+<div>
+  <textarea id="csharp-code">
+
+  </textarea>
+</div>
+
+<h2>CSS Example</h2>
+
+<div>
+  <textarea id="css-code">
+
+
+
+  </textarea></div>
+
+
+    <p>Simple mode that tries to handle C-like languages as well as it
+    can. Takes two configuration parameters: <code>keywords</code>, an
+    object whose property names are the keywords in the language,
+    and <code>useCPP</code>, which determines whether C preprocessor
+    directives are recognized.</p>
+
+    <p><strong>MIME types defined:</strong> <code>text/x-csrc</code>
+    (C code), <code>text/x-c++src</code> (C++
+    code), <code>text/x-java</code> (Java
+    code), <code>text/x-csharp</code> (C#).</p>
+
+</article>

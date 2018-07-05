@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="/scripts/vendor/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/vendor/bootstrap/4.0.0/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src ="/scripts/app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+</head>
+<body onload="document.form.txtname.focus();">
+    
+        <form class="form-signin" name="form">
+       
+    <table>
+        <tr>
+            <td>           
+                <h2 class="form-signin-heading">Configuration</h2>
+            </td>
+         </tr>   
+    
+        <tr>                    
+               <td>Name</td>                  
+               <td> <input type="text" id="inputtext" class="form-control" name="txtname" placeholder="Enter Name"></td>
+               <td ><span id ="configname" style="margin-right: 300px;"></span></td>
+        </tr>
+            <tr>
+               <td>User Name</td>
+                <td><input type="text" id="usertext" class="form-control"  placeholder="Enter User Name"></td>
+                <td><span id ="configuser"></span></td>
+            </tr>   
+            <tr>
+                <td>Password</td>
+                <td><input type="text" id="pwdtext" class="form-control"  placeholder="Enter Password"></td>
+                <td><span id ="configpassword"></span></td>
+            </tr>        
+            <tr>
+                <td>Brokers</td>
+                <td><input type="text" id="brokertext" class="form-control"  placeholder="Enter Broker Name"></td>
+                <td><span id ="configbroker"></span></td>
+            </tr>
+            <tr>
+                <td>Component Type</td>
+                <td>
+                    <div class="dropdown mb-3 mt-3">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Component Type
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Producer</a>
+                        <a class="dropdown-item" href="#">Consumer</a>
+                        <a class="dropdown-item" href="#">Both</a>
+                      </div>
+                    </div>
+                </td>
+            </tr>        
+            <tr>
+                <td>Description</td>
+                <td><textarea class="form-control" id="Textarea1" rows="3" cols="40"></textarea></td>
+                <td> <span id ="configdesc"></span></td>
+            </tr>           
+            <tr>
+                <td>
+                <div class="col zero-padding-button mt-3">
+                   <a class="btn btn-lg btn-primary btn-block" id="btn1" href="#" role="button">Save</a>
+                </div>
+            </td>
+            <td>
+                <div class="col zero-padding-button pl-3 mt-3">
+                    <button class="btn btn-lg btn-primary btn-block invertbutton" id="btn2" type="submit">Cancel</button>
+                </div>
+            </td>
+        </tr>
+    </table>                  
+    </form>
+    </div>
+</body>
+</html>

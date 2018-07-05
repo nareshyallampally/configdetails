@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="/scripts/vendor/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/vendor/bootstrap/4.0.0/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/vendor/bootstrap/4.0.0/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src ="/scripts/app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+</head>
+<body style="padding-top: 0px;">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-info  mt-0">
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" >Kafka On Wire</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                  Connection
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">New</a>
+                  <a class="dropdown-item" href="#">Open</a>
+                  <a class="dropdown-item" href="#">Duplicate</a>
+                  <a class="dropdown-item" href="#">Delete</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>         
+
+            <div class="card-deck">
+              
+
+            <div class="card mb-4">
+              
+                  
+            <form class="form-inline mb-3">
+              <input class="form-control mt-3 mr-sm-3 " type="search" placeholder="Search" aria-label="Search" id="inputsearch">
+              <button class="btn btn-outline-success mt-3 mr-sm-3 mx-4" type="submit" id="subsearch">Search</button>
+            </form>
+            <br/> 
+            
+
+             <select  select class="form-control" size=100  id="Formselect">
+            </select>
+
+          </div> <!-- card div -->
+
+          <div class="card-body">
+
+        <div class = "container">
+                    <form>
+                <div class="form-group row my-5 mx-5">
+            <label for="inputName1" class="col-sm-3 col-form-label">Name</label>
+            <div class="col-xs-4">
+              <input type="text" class="form-control" name="region" id="inputName" placeholder="Enter Name">
+            </div>
+
+          </div> <!-- form group div -->
+           <div class="form-group row my-5 mx-5">
+            <label for="inputUser" class="col-sm-3 col-form-label">User Name</label>
+            <div class="col-xs-4">
+              <input type="text" class="form-control" id="inputUser" placeholder="Enter User Name">
+            </div>
+          </div> <!-- form group div -->
+           <div class="form-group row my-5 mx-5">
+            <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+            <div class="col-xs-4">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password">
+            </div>
+          </div> <!-- form group div -->
+           <div class="form-group row my-5 mx-5">
+            <label for="inputBroker" class="col-sm-3 col-form-label">Broker Name</label>
+            <div class="col-xs-4">
+              <input type="text" class="form-control" id="inputBroker" placeholder="Enter Broker Name">
+            </div>
+          </div> <!-- form group div -->
+
+          <div class="form-group row my-5 mx-5">
+            <label for="inputBroker" class="col-sm-3 col-form-label">Description</label>
+            <div class="col-xs-4">
+              <textarea class="form-control" id="Textarea1" rows="3" cols="30"></textarea>
+            </div>
+          </div> <!-- form group div -->
+            <div class="form-group row my-5 mx-5">
+               <label for="inputBroker" class="col-sm-3 col-form-label">Component Type</label>
+              <div class="col-xl-4">
+              <select class="form-control form-control-sm">
+                  <option>Producer</option>
+                  <option>Consumer</option>
+                  <option>Both</option>
+              </select>
+            </div>
+            </div>  <!-- form group div -->
+
+            <div class="form-group row my-5 mx-5">
+               <label for="inputBroker" class="col-sm-3 col-form-label">OffSet</label>
+              <div class="col-xl-4">
+              <select class="form-control form-control-sm-3">
+                  <option>Earliest</option>
+                  <option>Latest</option>
+              </select>
+            </div>
+            </div> <!-- form group div -->
+
+            	   <div class="form-group row my-5 mx-5">
+              <label for="inputTopic" class="col-sm-3 col-form-label">Topic</label>
+              <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputTopic" placeholder="Topic">
+              </div>
+            </div> <!-- form group div -->
+             <div class="form-group row my-5 mx-5">
+              <label for="inputTime" class="col-sm-3 col-form-label">Time Out</label>
+              <div class="col-xs-4">
+                <input type="number" class="form-control" id="inputTime" placeholder="Enter Time">
+              </div>
+            </div> <!-- form group div -->
+             <div class="form-group row my-5 mx-5">
+              <label for="inputConsumer" class="col-sm-3 col-form-label">Consumer Group</label>
+              <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputConsumer" placeholder="Enter Consumer Group">
+              </div>
+            </div> <!-- form group div -->
+             <div class="form-group row my-5 mx-5">
+              <label for="inputId" class="col-sm-3 col-form-label">Consumer Id</label>
+              <div class="col-xs-4">
+                <input type="number" class="form-control" id="inputId" placeholder="Enter Consumer Id">
+              </div>
+            </div> <!-- form group div -->
+              <div class="form-group row my-5 mx-5">
+                          <div class="col-xl-3">
+                             <a class="btn btn-lg btn-primary btn-block" id="btn1" href="#" role="button">Save</a>
+                          </div>
+                          <div class="col-xl-3  ml-4">
+                              <button class="btn btn-lg btn-primary btn-block invertbutton" id="btn2" type="button">Cancel</button>
+                          </div>
+                      </div> <!-- form group div -->
+          </form>
+          </div>   <!--  Container -->
+           
+                        
+                                
+
+          </div> <!-- Card-body -->
+
+          </div> <!-- card group -->
+
+              
+           
+          </body>
+          </html>

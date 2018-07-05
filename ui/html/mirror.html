@@ -1,0 +1,271 @@
+
+<!doctype html>
+
+<title>CodeMirror: C-like mode</title>
+<meta charset="utf-8"/>
+<script src="/scripts/vendor/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/docs.css" />
+<link rel="stylesheet" type="text/css" href="/css/vendor/codemirror/5.36.0/codemirror.css">
+<link rel="stylesheet" href="/css/vendor/codemirror/5.36.0/show-hint.css">
+<link rel="stylesheet" href="/css/vendor/google-code-prettify/prettify.css" />
+<!-- <link rel="stylesheet" href="/css/vendor/google-code-prettify/skin/doxy.css" /> -->
+
+<script src="/scripts/vendor/codemirror/5.36.0/codemirror.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/matchbrackets.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/show-hint.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/clike.js"></script>
+<script src="/scripts/vendor/google-code-prettify/prettify.js"></script>
+<script src="/scripts/vendor/google-code-prettify/lang-css.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/mode/javascript/javascript.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/mode/css/css.js"></script>
+<script type="text/javascript" src ="/scripts/code.js"></script>
+<link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+<style>
+.CodeMirror {
+  border: 2px inset #dee;
+}
+</style>
+<select id="themeSelection">
+</select>
+
+<article>
+
+<h2>C-like mode</h2>
+
+<div><textarea id="c-code">
+
+  /* C demo code */
+
+#include <zmq.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <time.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <malloc.h>
+
+typedef struct {
+  void* arg_socket;
+  zmq_msg_t* arg_msg;
+  char* arg_string;
+  unsigned long arg_len;
+  int arg_int, arg_command;
+
+  int signal_fd;
+  int pad;
+  void* context;
+  sem_t sem;
+} acl_zmq_context;
+
+#define p(X) (context->arg_##X)
+
+void* zmq_thread(void* context_pointer) {
+  acl_zmq_context* context = (acl_zmq_context*)context_pointer;
+  char ok = 'K', err = 'X';
+  int res;
+
+  while (1) {
+    while ((res = sem_wait(&context->sem)) == EINTR);
+    if (res) {write(context->signal_fd, &err, 1); goto cleanup;}
+    switch(p(command)) {
+    case 0: goto cleanup;
+    case 1: p(socket) = zmq_socket(context->context, p(int)); break;
+    case 2: p(int) = zmq_close(p(socket)); break;
+    case 3: p(int) = zmq_bind(p(socket), p(string)); break;
+    case 4: p(int) = zmq_connect(p(socket), p(string)); break;
+    case 5: p(int) = zmq_getsockopt(p(socket), p(int), (void*)p(string), &p(len)); break;
+    case 6: p(int) = zmq_setsockopt(p(socket), p(int), (void*)p(string), p(len)); break;
+    case 7: p(int) = zmq_send(p(socket), p(msg), p(int)); break;
+    case 8: p(int) = zmq_recv(p(socket), p(msg), p(int)); break;
+    case 9: p(int) = zmq_poll(p(socket), p(int), p(len)); break;
+    }
+    p(command) = errno;
+    write(context->signal_fd, &ok, 1);
+  }
+ cleanup:
+  close(context->signal_fd);
+  free(context_pointer);
+  return 0;
+}
+
+void* zmq_thread_init(void* zmq_context, int signal_fd) {
+  acl_zmq_context* context = malloc(sizeof(acl_zmq_context));
+  pthread_t thread;
+
+  context->context = zmq_context;
+  context->signal_fd = signal_fd;
+  sem_init(&context->sem, 1, 0);
+  pthread_create(&thread, 0, &zmq_thread, context);
+  pthread_detach(thread);
+  return context;
+}
+
+</textarea></div>
+
+<h2>C++ example</h2>
+
+
+<div><textarea id="cpp-code">
+#include <iostream>
+#include "mystuff/util.h"
+
+namespace {
+enum Enum {
+  VAL1, VAL2, VAL3
+};
+
+char32_t unicode_string = U"\U0010FFFF";
+string raw_string = R"delim(anything
+you
+want)delim";
+
+int Helper(const MyType& param) {
+  return 0;
+}
+} // namespace
+
+class ForwardDec;
+
+template <class T, class V>
+class Class : public BaseClass {
+  const MyType<T, V> member_;
+
+ public:
+  const MyType<T, V>& Method() const {
+    return member_;
+  }
+
+  void Method2(MyType<T, V>* value);
+}
+
+template <class T, class V>
+void Class::Method2(MyType<T, V>* value) {
+  std::out << 1 >> method();
+  value->Method3(member_);
+  member_ = value;
+}
+</textarea></div>
+
+<h2>Java example</h2>
+
+
+<div><textarea id="java-code">
+  import com.demo.util.MyType;
+import com.demo.util.MyInterface;
+
+public enum Enum {
+  VAL1, VAL2, VAL3
+}
+
+public class Class<T, V> implements MyInterface {
+  public static final MyType<T, V> member;
+
+  private class InnerClass {
+    public int zero() {
+      return 0;
+    }
+  }
+
+  @Override
+  public MyType method() {
+    return member;
+  }
+
+  public void method2(MyType<T, V> value) {
+    method();
+    value.method3();
+    member = value;
+  }
+}
+
+</textarea></div>
+<h2>C# example</h2>
+
+<div>
+  <textarea id="csharp-code">
+    /*
+ * C# Program to Demonstrate IndexOutOfRange Exception
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace differnce
+{
+    class arrayoutofindex
+    {
+        public void calculatedifference()
+        {
+            int difference=0;
+            int [] number= new int[5] {1,2,3,4,5};
+            try
+            {
+                for (int init =1; init <=5; init++)
+                {
+                    difference= difference -  number[init];
+                }
+                Console.WriteLine("The difference of the array is:" + difference);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+    class classmain
+    {
+        static void Main(string [] args)
+    {
+        arrayoutofindex obj = new arrayoutofindex();
+        obj.calculatedifference();
+        Console.ReadLine();
+    }
+}
+}
+  </textarea>
+</div>
+
+<h2>CSS Example</h2>
+
+<div>
+  <textarea id="css-code">
+    
+  p { margin-top: 0; }
+
+h2, h3, h1 {
+  font-weight: normal;
+  margin-bottom: .7em;
+}
+h1 { font-size: 140%; }
+h2 { font-size: 120%; }
+h3 { font-size: 110%; }
+article > h2:first-child, section:first-child > h2 { margin-top: 0; }
+
+#nav h1 {
+  margin-right: 12px;
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #d30707;
+  letter-spacing: .5px;
+}
+
+
+
+
+  </textarea></div>
+
+
+    <p>Simple mode that tries to handle C-like languages as well as it
+    can. Takes two configuration parameters: <code>keywords</code>, an
+    object whose property names are the keywords in the language,
+    and <code>useCPP</code>, which determines whether C preprocessor
+    directives are recognized.</p>
+
+    <p><strong>MIME types defined:</strong> <code>text/x-csrc</code>
+    (C code), <code>text/x-c++src</code> (C++
+    code), <code>text/x-java</code> (Java
+    code), <code>text/x-csharp</code> (C#).</p>
+
+</article>

@@ -1,0 +1,64 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title> page title</title>
+</head>
+<link rel="stylesheet" href="/css/docs.css" />
+<link rel="stylesheet" type="text/css" href="/css/vendor/codemirror/5.36.0/codemirror.css">
+<link rel="stylesheet" href="/css/vendor/codemirror/5.36.0/show-hint.css">
+<link rel="stylesheet" href="/css/vendor/google-code-prettify/prettify.css" />
+<link rel="stylesheet" href="/css/vendor/google-code-prettify/skin/doxy.css" />
+<script src="/scripts/vendor/codemirror/5.36.0/codemirror.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/matchbrackets.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/show-hint.js"></script>
+<script src="/scripts/vendor/codemirror/5.36.0/clike.js"></script>  
+<script src="/scripts/vendor/google-code-prettify/prettify.js"></script> 
+<script src="/scripts/vendor/google-code-prettify/lang-css.js"></script>   
+<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+<!-- <script src="https://rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;skin=doxy&amp;lang=css" defer=""></script> -->
+<h2>css</h2>
+<div>
+  <textarea id="css-code">
+
+
+  p { margin-top: 0; }
+
+h2, h3, h1 {
+  font-weight: normal;
+  margin-bottom: .7em;
+}
+h1 { font-size: 140%; }
+h2 { font-size: 120%; }
+h3 { font-size: 110%; }
+article > h2:first-child, section:first-child > h2 { margin-top: 0; }
+
+#nav h1 {
+  margin-right: 12px;
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #d30707;
+  letter-spacing: .5px;
+}
+
+
+  </textarea></div>
+  <script type="text/javascript">
+  	var cssEditor=CodeMirror.fromTextArea(document.getElementById("css-code"),{
+        lineNumbers:true,
+        matchbrackets:true,
+        mode:"css"
+        
+      });
+  </script>
+<pre class="prettyprint">
+<body >
+
+	
+</script>
+	<p>Simple mode that tries to handle C-like languages as well as it can. Takes two configuration parameters: keywords, an object whose property names are the keywords in the language, and useCPP, which determines whether C preprocessor directives are recognized.</p>
+	<p>The mode to use. When not given, this will default to the first mode that was loaded. It may be a string, which either simply names the mode or is a MIME type associated with the mode. Alternatively, it may be an object containing configuration options for the mode, with a name property that names the mode (for example {name: "javascript", json: true}). The demo pages for each mode contain information about what configuration parameters the mode supports. You can ask CodeMirror which modes and MIME types have been defined by inspecting the CodeMirror.modes and CodeMirror.mimeModes objects. The first maps mode names to their constructors, and the second maps MIME types to mode specs.</p>
+
+</body>
+</pre>
+</html>
